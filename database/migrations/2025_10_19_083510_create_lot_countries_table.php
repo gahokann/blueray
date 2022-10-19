@@ -13,12 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('statuses', function (Blueprint $table) {
+        Schema::create('lot_countries', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('lot_id')->unsigned()->index();
+            $table->bigInteger('country_id')->unsigned()->index();
             $table->timestamps();
-            $table->string('name');
-        
-            
+
+            $table->foreign('lot_id')->references('id')->on('lots')->onDelete('cascade');
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
         });
     }
 
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('statuses');
+        Schema::dropIfExists('lot_countries');
     }
 };

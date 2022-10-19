@@ -17,16 +17,18 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('img');
-            $table->string('description');
+            $table->text('description');
+            $table->integer('age');
+            $table->date('date');
             $table->double('price');
-            $table->double('rating');
-            $table->bigInteger('genre_id')->unsigned()->index();
+            $table->double('rating')->default(0);
             $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('status_id')->unsigned();
 
             $table->index('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('genre_id')->references('id')->on('genres');
-
+            $table->foreign('status_id')->references('id')->on('statuses');
+            $table->timestamps();
         });
     }
 

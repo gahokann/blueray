@@ -684,8 +684,6 @@ select:hover
 }
 select option
 {
-	border: 0;
-	border-bottom: 1px solid #555;
 	padding: 10px;
 	-webkit-appearance: none;
 	-moz-appearance: none;

@@ -32,7 +32,21 @@
                     <div class="form-outline flex-fill mb-0">
                       <input type="text" name="name" id="form3Example1c" class="form-control" />
                       <label class="form-label"  for="form3Example1c">Ваше Имя</label>
+
                     </div>
+                    @error('name')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                  </div>
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="text" name="surname" id="form3Example1c" class="form-control" />
+                      <label class="form-label"  for="form3Example1c">Ваша Фамилия</label>
+                    </div>
+                    @error('surname')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                   </div>
 
                   <div class="d-flex flex-row align-items-center mb-4">
@@ -40,7 +54,11 @@
                     <div class="form-outline flex-fill mb-0">
                       <input type="email" name="email" id="form3Example3c" class="form-control" />
                       <label class="form-label" for="form3Example3c">Ваш email</label>
+
                     </div>
+                    @error('email')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                   </div>
 
                   <div class="d-flex flex-row align-items-center mb-4">
@@ -48,7 +66,11 @@
                     <div class="form-outline flex-fill mb-0">
                       <input type="password" name="password" id="form3Example4c" class="form-control" />
                       <label class="form-label" for="form3Example4c">Пароль</label>
+
                     </div>
+                    @error('password')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                   </div>
 
                   <div class="d-flex flex-row align-items-center mb-4">

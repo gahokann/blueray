@@ -10,25 +10,20 @@ class Order extends Model
     use HasFactory;
     protected $guarded=[];
 
-    protected $fillable = [
-        'name',
-        'client_id',
-        'lot_id',
-        'manager_id',
-        'status_id',
-        'adress'
-    ];
-
     public function orders() {
         return $this->hasOne(User::class);
     }
 
     public function lots() {
-        return $this->hasOne(Lot::class);
+        return $this->hasOne(Lot::class, 'id', 'lot_id');
     }
 
     public function status() {
-        return $this->hasOne(Status::class);
+        return $this->hasOne(OrderStatus::class, 'id', 'status_id');
+    }
+
+    public function users() {
+        return $this->hasOne(User::class, 'id', 'executor_id', 'client_id');
     }
 
 }

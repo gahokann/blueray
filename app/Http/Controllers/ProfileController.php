@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Actor;
+use App\Models\Country;
+use App\Models\Genre;
+use App\Models\Lot;
+use App\Models\Order;
+use App\Models\Status;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +21,18 @@ class ProfileController extends Controller
 
     public function settings() {
         return view('profile.settings');
+    }
+
+    public function showLots()
+    {
+        $genres = Genre::all();
+        $actors = Actor::all();
+        $countries = Country::all();
+        $statuses = Status::all();
+
+        $lots = Lot::where('user_id', Auth::user()->id)->get();
+
+        return view('profile.lots', compact('genres', 'actors', 'countries', 'lots', 'statuses'));
     }
 
     public function changePassword() {
@@ -56,5 +74,12 @@ class ProfileController extends Controller
 
         return back()->with("status", "Иконка успешна сменёна!");
 
+    }
+
+    public function showOrder()
+    {
+        $orders = Order::where('client_id', Auth::user()->id)->get();
+
+        return view('profile.order', compact('orders'));
     }
 }

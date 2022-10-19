@@ -14,14 +14,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('genres', function (Blueprint $table) {
+        Schema::create('actors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('surname');
+            $table->timestamps();
         });
 
-        DB::table('genres')->insert([
-            ["name" => "Боевик"],
-            ["name" => "Детектив"],
+        DB::table('actors')->insert([
+            ["name" => "Дмитрий", "surname" => 'Лебедв'],
+            ["name" => "Василий", "surname" => 'Пупкин'],
         ]);
     }
 
@@ -32,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('genres');
+        Schema::dropIfExists('actors');
     }
 };

@@ -17,16 +17,16 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->bigInteger('client_id')->unsigned()->index();;
+            $table->bigInteger('client_id')->unsigned()->index();
             $table->bigInteger('lot_id')->unsigned()->index();
-            $table->bigInteger('manager_id')->unsigned()->index();;
-            $table->bigInteger('status_id')->unsigned()->index();;
-            $table->string('adress');
+            $table->bigInteger('status_id')->unsigned()->index()->default(1);
+            $table->bigInteger('executor_id')->unsigned()->index();
+            $table->string('address');
 
-            $table->foreign('manager_id')->references('id')->on('users');
             $table->foreign('client_id')->references('id')->on('users');
+            $table->foreign('executor_id')->references('id')->on('users');
             $table->foreign('lot_id')->references('id')->on('lots');
-            $table->foreign('status_id')->references('id')->on('statuses');
+            $table->foreign('status_id')->references('id')->on('order_statuses');
         });
     }
 

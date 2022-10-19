@@ -10,22 +10,31 @@ class Lot extends Model
     use HasFactory;
     protected $guarded=[];
 
-    protected $fillable = [
-        'name',
-        'img',
-        'description',
-        'price',
-        'rating',
-        'genre_id',
-        'user_id',
-    ];
 
     public function user() {
         return $this->hasMany(User::class, 'id', 'user_id');
     }
 
-    public function genres() {
-        return $this->hasOne(Genre::class, 'id', 'genre_id');
+    public function genre() {
+        return $this->belongsToMany(Genre::class, 'lot_genres');
     }
+
+    public function actor() {
+        return $this->belongsToMany(Actor::class, 'lot_actors', 'lot_id', 'actor_id');
+    }
+
+    public function country() {
+        return $this->belongsToMany(Country::class, 'lot_countries');
+    }
+
+    public function status() {
+        return $this->hasOne(Status::class, 'id', 'status_id');
+    }
+
+    public function order() {
+        return $this->hasOne(Order::class);
+    }
+
+
 
 }
