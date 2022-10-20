@@ -36,7 +36,7 @@
                     </div>
                 </div>
 
-                <!-- Search -->
+                {{-- <!-- Search -->
                 <div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
                     <div class="header_search">
                         <div class="header_search_content">
@@ -61,11 +61,11 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </div> --}}
+                {{-- </div> --}}
 
                 <!-- Wishlist -->
-                <div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
+                {{-- <div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
                     <div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
                         <div class="wishlist d-flex flex-row align-items-center justify-content-end">
                             <div class="wishlist_icon"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918681/heart.png" alt=""></div>
@@ -89,7 +89,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

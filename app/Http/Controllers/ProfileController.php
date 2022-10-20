@@ -7,6 +7,7 @@ use App\Models\Country;
 use App\Models\Genre;
 use App\Models\Lot;
 use App\Models\Order;
+use App\Models\OrderStatus;
 use App\Models\Status;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -29,10 +30,11 @@ class ProfileController extends Controller
         $actors = Actor::all();
         $countries = Country::all();
         $statuses = Status::all();
+        $orders = Order::where('executor_id', Auth::user()->id)->get();
 
         $lots = Lot::where('user_id', Auth::user()->id)->get();
 
-        return view('profile.lots', compact('genres', 'actors', 'countries', 'lots', 'statuses'));
+        return view('profile.lots', compact('genres', 'actors', 'countries', 'lots', 'statuses', 'orders'));
     }
 
     public function changePassword() {
@@ -82,4 +84,19 @@ class ProfileController extends Controller
 
         return view('profile.order', compact('orders'));
     }
+
+    public function showUserOther($id, User $user)
+    {
+        $user = $user->find($id);
+
+        if($user != Null && $user->id != Auth::user()->id) {
+            $lots = Lot::where('user_id', $user->id)->get();
+            return view('profile.userOther', compact('user', 'lots'));
+        }
+        else
+        {
+            abort(404);
+        }
+    }
+
 }

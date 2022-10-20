@@ -26,10 +26,10 @@
           <a href="{{ route('profile.showLots') }}" class="btn btn-outline-primary" style="width: 100%">Мои лоты</a>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-          <a href="#" class="btn btn-outline-primary" style="width: 100%">Каталог</a>
-        </li>
+            <a href="{{ route('profile.showOrder') }}" class="btn btn-outline-primary" style="width: 100%">Мои заказы</a>
+          </li>
         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-          <a href="{{ route('profile.showOrder') }}" class="btn btn-outline-primary" style="width: 100%">Мои заказы</a>
+          <a href="{{ route('home') }}" class="btn btn-outline-primary" style="width: 100%">Каталог</a>
         </li>
       </ul>
     </div>

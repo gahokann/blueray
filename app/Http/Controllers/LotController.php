@@ -8,6 +8,7 @@ use App\Models\LotActor;
 use App\Models\LotCountry;
 use App\Models\LotGenre;
 use App\Models\Order;
+use App\Models\OrderStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -204,4 +205,41 @@ class LotController extends Controller
         else
             abort(404);
     }
+
+    public function orderFormChange($id)
+    {
+        $order = Order::find($id);
+        if($order != Null) {
+            $statusesOrder = OrderStatus::all();
+
+            return view('profile.orderFormStatus', compact('statusesOrder', 'order'));
+        }
+        else
+            abort(404);
+
+    }
+
+    public function orderChangeStatus($id, Request $request)
+    {
+        $order = Order::find($id);
+
+        if($order != Null && $order->executor_id == Auth::user()->id) {
+            $validator = Validator::make($request->all(), [
+                'status_id' => 'required|integer',
+            ]);
+
+
+            if ($validator->fails())
+            {
+                return redirect()->route('profile.showLots')->with('status', 'Ошибка');
+            }
+
+            $order->update([
+                'status_id' => $request->get('status_id'),
+            ]);
+
+            return redirect()->route('profile.showLots')->with('status', 'Статус заказа успешно изменен');
+        }
+    }
+
 }

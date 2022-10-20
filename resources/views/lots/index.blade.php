@@ -41,7 +41,7 @@
             <a href="{{ route('lot.destroy', ['id' => $lot->user_id]) }}" class="btn btn-outline-danger btn-info-disk">Удалить лот</a>
             @endif
             <div class="main__item__author__info">
-                <a href="#" class="badge text-bg-success author__info">{{ $lot->user[0]->name }} {{ $lot->user[0]->surname }}</a>
+                <a href="{{ route('profile.showUserOther', ['id' => $lot->user_id]) }}" class="badge text-bg-success author__info">{{ $lot->user[0]->name }} {{ $lot->user[0]->surname }}</a>
             </div>
             @if($lot->status->id == 1)
             <div class="main__item__author__info mt-1">

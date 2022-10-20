@@ -22,6 +22,7 @@ Auth::routes();
 
 Route::name('profile.')->prefix('profile')->group(function(){
     Route::get('index', [App\Http\Controllers\ProfileController::class, 'index'])->name("index")->middleware('auth');
+    Route::get('user/other/{id}', [App\Http\Controllers\ProfileController::class, 'showUserOther'])->name("showUserOther");
     Route::get('settings', [App\Http\Controllers\ProfileController::class, 'settings'])->name("settings")->middleware('auth');
     Route::get('lots', [App\Http\Controllers\ProfileController::class, 'showLots'])->name("showLots")->middleware('auth');
     Route::get('order', [App\Http\Controllers\ProfileController::class, 'showOrder'])->name("showOrder")->middleware('auth');
@@ -35,6 +36,9 @@ Route::name('lot.')->prefix('lot')->group(function(){
     Route::get('orderForm/{id}', [App\Http\Controllers\LotController::class, 'orderForm'])->name("orderForm")->middleware('auth');
     Route::post('orderCreate/{id}', [App\Http\Controllers\LotController::class, 'orderCreate'])->name("orderCreate")->middleware('auth');
     Route::get('destroy/{id}', [App\Http\Controllers\LotController::class, 'destroy'])->name("destroy")->middleware('auth');
+
+    Route::get('order/form/change/{id}', [App\Http\Controllers\LotController::class, 'orderFormChange'])->name("orderFormChange")->middleware('auth');
+    Route::post('order/change/status/{id}', [App\Http\Controllers\LotController::class, 'orderChangeStatus'])->name("orderChangeStatus")->middleware('auth');
 });
 
 Route::get('/logout', function () {
