@@ -70,7 +70,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Заголовок</th>
                             <th scope="col">Цена</th>
-                            {{-- <th scope="col">Заказчик лота</th> --}}
+                            <th scope="col">Заказчик лота</th>
                             <th scope="col">Дата создания заказа</th>
                             <th scope="col">Адрес</th>
                             <th scope="col">Статус</th>
@@ -83,7 +83,7 @@
                                 <th scope="row">{{ $order->id }}</th>
                                 <td>{{ $order->lots->name }}</td>
                                 <td>{{ $order->lots->price }} руб.</td>
-                                {{-- <td>{{ $order->executor_id->users->name }} {{ $order->users->surname }}</td> --}}
+                                <td>{{ $order->usersClient->name }} {{ $order->usersClient->surname }}</td>
                                 <td>
                                     {{ $order->created_at }}
                                 </td>

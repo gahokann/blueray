@@ -47,9 +47,9 @@
     <h3 class="pb-4 mb-4 fst-italic border-bottom d-flex  justify-content-between">
 
     <p>Все товары</p>
-    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 d-flex search-form"  role="search">
-        <input type="search" class="form-control search" placeholder="Search..." aria-label="Search">
-        <button class="btn btn-outline-success btn-sm btn-search">Найти</button>
+    <form action="{{ route('searchLot') }}" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 d-flex search-form"  role="search" method="GET">
+        <input name="search" type="search" class="form-control search" placeholder="Search..." aria-label="Search">
+        <button type="submit" class="btn btn-outline-success btn-sm btn-search">Найти</button>
       </form>
     </h3>
 

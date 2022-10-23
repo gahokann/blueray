@@ -23,7 +23,11 @@ class Order extends Model
     }
 
     public function users() {
-        return $this->hasOne(User::class, 'id', 'executor_id', 'client_id');
+        return $this->hasOne(User::class, 'id', 'executor_id');
+    }
+
+    public function usersClient() {
+        return $this->hasOne(User::class, 'id', 'client_id');
     }
 
 }
